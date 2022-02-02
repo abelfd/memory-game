@@ -8,8 +8,20 @@
 </head>
 <body>
 
-  <h3>Score:<span id="result"></span></h3>
+  <h3 class="contador" onmouseover="hacergrande(this)" onmouseout="hacerpequeño(this)">Score:<span id="result"></span></h3>
+  <h3 class="vida" >Life:<span id="life"></span></h3>
+  
+  <script type="text/javascript">;
 
+    function hacergrande(texto) {
+      texto.style.fontSize = "30px";
+    }
+
+    function hacerpequeño(texto) {
+      texto.style.fontSize = "20px";
+    }
+
+  </script>
   <div class="grid">
   </div>
 

@@ -55,9 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const grid = document.querySelector('.grid')
   const resultDisplay = document.querySelector('#result')
+  //mio
+  const vida = document.querySelector('#life')
   let cardsChosen = []
   let cardsChosenId = []
   let cardsWon = []
+  let errores = 4
 
   //create your board
   function createBoard() {
@@ -79,10 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if(optionOneId == optionTwoId) {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
-      alert('You have clicked the same image!')
+      alert('Has clicado la misma imagen!')
+      //restar errores
+      errores--
     }
     else if (cardsChosen[0] === cardsChosen[1]) {
-      alert('You found a match')
+      alert('Coinciden las dos imganes')
       cards[optionOneId].setAttribute('src', 'images/white.png')
       cards[optionTwoId].setAttribute('src', 'images/white.png')
       cards[optionOneId].removeEventListener('click', flipCard)
@@ -91,13 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       cards[optionOneId].setAttribute('src', 'images/blank.png')
       cards[optionTwoId].setAttribute('src', 'images/blank.png')
-      alert('Sorry, try again')
+      alert('Vuelve a intentarlo')
+      //restar errores
+      errores--
     }
     cardsChosen = []
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length
+    //restar errores
+    vida.textContent = errores
     if  (cardsWon.length === cardArray.length/2) {
       resultDisplay.textContent = 'Congratulations! You found them all!'
+    }
+    //restar errores
+    if  (errores < 1) {
+      alert('Has perdido Abel Flores')
     }
   }
 
